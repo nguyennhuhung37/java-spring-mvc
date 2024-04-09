@@ -1,7 +1,6 @@
 package vn.hoidanit.laptopshop.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -34,6 +33,10 @@ public class UserService {
 
     public User handleSaveUser(User user) {
         return this.userRepository.save(user);
+    }
+
+    public void deleteAUser(long id) {
+        this.userRepository.deleteById(id);
     }
 
 }
