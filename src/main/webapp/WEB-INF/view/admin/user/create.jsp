@@ -36,25 +36,50 @@
                                             <hr />
                                             <form:form method="post" action="/admin/user/create"
                                                 modelAttribute="newUser">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Email:</label>
-                                                    <form:input type="email" class="form-control" path="email" />
+                                                <div class="row g-3">
+                                                    <div class="mb-3 col">
+                                                        <label class="form-label">Email:</label>
+                                                        <form:input type="email" class="form-control" path="email" />
+                                                    </div>
+                                                    <div class="mb-3 col">
+                                                        <label class="form-label">Password:</label>
+                                                        <form:input type="password" class="form-control"
+                                                            path="password" />
+                                                    </div>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Password:</label>
-                                                    <form:input type="password" class="form-control" path="password" />
+                                                <div class="row g-3">
+                                                    <div class="mb-3 col">
+                                                        <label class="form-label">Phone number:</label>
+                                                        <form:input type="text" class="form-control" path="phone" />
+                                                    </div>
+                                                    <div class="mb-3 col">
+                                                        <label class="form-label">Full Name:</label>
+                                                        <form:input type="text" class="form-control" path="fullName" />
+                                                    </div>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Phone number:</label>
-                                                    <form:input type="text" class="form-control" path="phone" />
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Full Name:</label>
-                                                    <form:input type="text" class="form-control" path="fullName" />
-                                                </div>
+
                                                 <div class="mb-3">
                                                     <label class="form-label">Address:</label>
                                                     <form:input type="text" class="form-control" path="address" />
+                                                </div>
+                                                <div class="row g-3">
+                                                    <div class="mb-3 col">
+                                                        <label for="selectRole" class="form-label">Role:</label>
+                                                        <select class="form-select" aria-label="Default select example"
+                                                            id="selectRole">
+                                                            <option value="1">ADMIN</option>
+                                                            <option value="2">USER</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3 col">
+                                                        <label for="avatarFile" class="form-label">Avatar:</label>
+                                                        <input class="form-control" type="file" id="avatarFile"
+                                                            accept=".png, .jdg, .jpeg">
+                                                    </div>
+                                                    <div class="col-12 mb-3">
+                                                        <img style="max-height: 250px; display: none;"
+                                                            alt="avatar preview" id="avatarPreview">
+                                                    </div>
                                                 </div>
 
                                                 <button type="submit" class="btn btn-primary">Create</button>
