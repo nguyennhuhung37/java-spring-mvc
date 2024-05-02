@@ -5,7 +5,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,7 +53,6 @@ public class UserController {
 
     @RequestMapping("/admin/user/{id}")
     public String getUserDetailPage(Model model, @PathVariable long id) {
-        System.out.println("check path id = " + id);
         model.addAttribute("id", id);
         User user = this.userService.getUserById(id);
         model.addAttribute("user", user);
@@ -74,10 +72,6 @@ public class UserController {
             @RequestParam("hoidanitFile") MultipartFile file) {
 
         // validate
-        List<FieldError> errors = newUserBindingResult.getFieldErrors();
-        for (FieldError error : errors) {
-            System.out.println(">>>>" + error.getField() + " - " + error.getDefaultMessage());
-        }
         if (newUserBindingResult.hasErrors()) {
             return "/admin/user/create";
         }

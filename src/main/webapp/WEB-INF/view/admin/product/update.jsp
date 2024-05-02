@@ -12,7 +12,7 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
                 <meta name="author" content="Hỏi Dân IT" />
-                <title>Create Product - Hỏi Dân IT</title>
+                <title>Update Product - Hỏi Dân IT</title>
                 <link href="/css/styles.css" rel="stylesheet" />
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
                 <script>
@@ -38,15 +38,21 @@
                                 <h1 class="mt-4">Manage Products</h1>
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Products</li>
+                                    <li class="breadcrumb-item"><a href="/admin/product">Product</a></li>
+                                    <li class="breadcrumb-item active">Update</li>
+                                </ol>
                                 </ol>
                                 <div class="container mt-5">
                                     <div class="row">
                                         <div class="col-md-6 col-12 mx-auto">
-                                            <h3>Create a product</h3>
+                                            <h3>Update a product</h3>
                                             <hr />
-                                            <form:form method="post" action="/admin/product/create"
+                                            <form:form method="post" action="/admin/product/update"
                                                 modelAttribute="newProduct" enctype="multipart/form-data">
+                                                <div class="mb-3" style="display: none;">
+                                                    <label class="form-label">Id:</label>
+                                                    <form:input type="text" class="form-control" path="id" />
+                                                </div>
                                                 <div class="row g-3">
                                                     <div class="mb-3 col">
                                                         <c:set var="errorName">
@@ -114,13 +120,14 @@
                                                 <div class="mb-3 col-6">
                                                     <label for="imageFile" class="form-label">Image:</label>
                                                     <input class="form-control" type="file" id="imageFile"
-                                                        accept=".png, .jpg, .jpeg" name="hoidanitFile" />
+                                                        accept=".png, .jpg, .jpeg" name="hoidanitFile"
+                                                        value="${newProduct.image}" />
                                                 </div>
                                                 <div class="col-12 mb-3">
-                                                    <img style="max-height: 250px; display: none;" alt="image preview"
-                                                        id="imagePreview">
+                                                    <img style="max-height: 250px; display: block;" alt="image preview"
+                                                        id="imagePreview" src="/images/product/${newProduct.image}">
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">Create</button>
+                                                <button type="submit" class="btn btn-primary">Update</button>
                                             </form:form>
                                         </div>
 
