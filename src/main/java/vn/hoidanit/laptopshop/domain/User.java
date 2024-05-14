@@ -23,24 +23,21 @@ public class User {
     private long id;
 
     @NotNull
-    @Email(message = "Email is not valid", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[azA-Z0-9.-]+$")
+    @Email(message = "Email không hợp lệ", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String email;
 
     @NotNull
-    @Size(min = 3, message = "Password phải có tối thiểu 3 ký tự")
+    @Size(min = 2, message = "Password phải có tối thiểu 2 ký tự")
     private String password;
 
     @NotNull
     @Size(min = 3, message = "Fullname phải có tối thiểu 3 ký tự")
     private String fullName;
 
-    @NotNull
     private String address;
 
-    @NotNull
     private String phone;
 
-    @NotNull
     private String avatar;
 
     // roleId
