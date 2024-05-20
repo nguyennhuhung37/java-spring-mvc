@@ -39,6 +39,24 @@ public class RegisterValidator implements ConstraintValidator<RegisterChecked, R
             valid = false;
         }
 
+        // check firstName
+        if (user.getFirstName().length() < 3) {
+            context.buildConstraintViolationWithTemplate("First Name phải có tối thiểu 3 kí tự")
+                    .addPropertyNode("firstName")
+                    .addConstraintViolation()
+                    .disableDefaultConstraintViolation();
+            valid = false;
+        }
+
+        // check lastName
+        if (user.getLastName().isEmpty()) {
+            context.buildConstraintViolationWithTemplate("Last Name không được để trống")
+                    .addPropertyNode("lastName")
+                    .addConstraintViolation()
+                    .disableDefaultConstraintViolation();
+            valid = false;
+        }
+
         return valid;
     }
 
