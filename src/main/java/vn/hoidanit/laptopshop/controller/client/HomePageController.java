@@ -72,6 +72,12 @@ public class HomePageController {
         return "client/auth/login";
     }
 
+    @GetMapping("/cart")
+    public String getCartPage(Model model) {
+
+        return "client/cart/show";
+    }
+
     @GetMapping("/access-deny")
     public String getDenyPage(Model model) {
 
