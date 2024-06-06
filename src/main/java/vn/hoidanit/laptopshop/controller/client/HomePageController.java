@@ -1,5 +1,6 @@
 package vn.hoidanit.laptopshop.controller.client;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -8,8 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import vn.hoidanit.laptopshop.domain.Cart;
+import vn.hoidanit.laptopshop.domain.CartDetail;
 import vn.hoidanit.laptopshop.domain.Product;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.domain.dto.RegisterDTO;
@@ -72,9 +76,18 @@ public class HomePageController {
         return "client/auth/login";
     }
 
-    @GetMapping("/cart")
-    public String getCartPage(Model model) {
-
+    @GetMapping("/cart/{id}")
+    public String getCartPage(Model model, @PathVariable long id) {
+        User user = this.userService.getUserById(id);
+        List<CartDetail> cartDetails = new ArrayList<>();
+        if (user.getCart() != null)
+            cartDetails = user.getCart().getCartDetails();
+        model.addAttribute("cartDetails", cartDetails);
+        long totalPrice = 0;
+        for (CartDetail cd : cartDetails) {
+            totalPrice += cd.getProduct().getPrice() * cd.getQuantity();
+        }
+        model.addAttribute("totalPrice", totalPrice);
         return "client/cart/show";
     }
 
